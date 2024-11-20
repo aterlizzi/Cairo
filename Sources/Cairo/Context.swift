@@ -434,6 +434,16 @@ public final class Context: OpaquePointerOwner {
         set { cairo_set_tolerance(internalPointer, newValue) }
     }
     
+    public func textExtents(text: String) -> (width: Double, height: Double) {
+        var textExtents = cairo_text_extents_t()
+        
+        text.withCString { cString in
+            cairo_text_extents(internalPointer, cString, &textExtents)
+        }
+        
+        return (width: textExtents.width, height: textExtents.height)
+    }
+    
     public var pathExtents: (x: Double, y: Double, width: Double, height: Double) {
         
         var x: Double = 0
