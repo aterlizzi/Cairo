@@ -44,7 +44,7 @@ public extension Surface {
         }
         
         /// Creates an image surface for the provided pixel data.
-        static func from <Result> (data: inout Data,
+        public static func from <Result> (data: inout Data,
                                    format: ImageFormat,
                                    width: Int,
                                    height: Int,
